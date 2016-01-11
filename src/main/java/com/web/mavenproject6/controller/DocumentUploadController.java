@@ -42,6 +42,7 @@ public class DocumentUploadController {
     @Autowired
     Environment env;
 
+    @ResponseBody
     @RequestMapping(value = "/uploadMultipleFile", method = RequestMethod.POST)
     public Object uploadMultipleFileHandler(
             @RequestParam("file") MultipartFile[] files) {
@@ -74,9 +75,10 @@ public class DocumentUploadController {
 
             }
         }
-        ModelAndView model = new ModelAndView("jsp/uploadedFiles");
-        model.addObject("list", l.toArray());
-        model.addObject("buffer",buf);
-        return model;
+       // ModelAndView model = new ModelAndView("jsp/uploadedFiles");
+        //model.addObject("list", l.toArray());
+       // model.addObject("buffer",buf);
+      //  return model;
+        return buf;
     }
 }

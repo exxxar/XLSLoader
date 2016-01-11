@@ -78,7 +78,6 @@ public class XLSParser {
         return buf;
     }
 
-
     public static String parse(String name) {
 
         String result = "";
@@ -95,39 +94,66 @@ public class XLSParser {
         for (int i = 0; i < wb.getNumberOfSheets(); i++) {
             System.out.println("!!!!sheet[" + i + "]:" + wb.getSheetName(i));
         }
+        for (int i = 0; i < wb.getNumberOfSheets(); i++) {
+            Sheet sheet = wb.getSheetAt(i);
+            Iterator<Row> it = sheet.iterator();
+            String buf = "";
+            while (it.hasNext()) {
+                Row row = it.next();
 
-        Sheet sheet = wb.getSheetAt(0);
-        Iterator<Row> it = sheet.iterator();
-        String buf = "";
-        while (it.hasNext()) {
-            Row row = it.next();
-            
-            //result += row.getRowNum() + ":";
-            switch (row.getRowNum() + 1) {
-                case 13:result+=readCell(row); result += "<br>"; break;
-                case 14:result+=readCell(row); result += "<br>";break;
-                case 15:result+=readCell(row); break;
-                case 16:result+=readCell(row); result += "<br>";break; 
-                case 18:result+=readCell(row); break; 
-                case 19:result+=readCell(row); break;
-                case 20:result+=readCell(row); break; 
-                case 21:result+=readCell(row); break; 
-                case 22:result+=readCell(row); result += "<br>"; break; 
-                case 25:result+=readCell(row); break; 
-                case 26:result+=readCell(row); result += "<br>"; break; 
-                default:
-                        result+=readCell(row); result += "<br>";
-                    break;
-            }
-            
+                //result += row.getRowNum() + ":";
+                switch (row.getRowNum() + 1) {
+                    case 13:
+                        result += readCell(row);
+                        result += "<br>";
+                        break;
+                    case 14:
+                        result += readCell(row);
+                        result += "<br>";
+                        break;
+                    case 15:
+                        result += readCell(row);
+                        break;
+                    case 16:
+                        result += readCell(row);
+                        result += "<br>";
+                        break;
+                    case 18:
+                        result += readCell(row);
+                        break;
+                    case 19:
+                        result += readCell(row);
+                        break;
+                    case 20:
+                        result += readCell(row);
+                        break;
+                    case 21:
+                        result += readCell(row);
+                        break;
+                    case 22:
+                        result += readCell(row);
+                        result += "<br>";
+                        break;
+                    case 25:
+                        result += readCell(row);
+                        break;
+                    case 26:
+                        result += readCell(row);
+                        result += "<br>";
+                        break;
+                    default:
+                        result += readCell(row);
+                        result += "<br>";
+                        break;
+                }
+
 //            if (row.getRowNum() + 1 != 34 || row.getRowNum() + 1 != 34) {
 //                result += readCell(row);
 //            } else {
 //                result += "[" + readCell(row, 0, 7) + "][" + readCell(row, 7, 10);
 //            }
-            
+            }
         }
-
         return result;
     }
 
